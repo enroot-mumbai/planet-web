@@ -1,11 +1,15 @@
-const initialValue = { theme: "theme-light" };
+// const initialValue = { theme: "theme-light" };
+import React from 'react'
 
-export const ThemeContext = React.createContext(initialValue);
+ export const ThemeContext = React.createContext({
+  theme: 'string',
+  toggleTheme: () => {}
+});
 
-export default function ThemeProvider({ children }) {
+export default function ThemeProvider({ children }:any) {
   const [theme, setTheme] = React.useState("theme-light");
 
-  function toggleTheme() {
+  const toggleTheme =() =>{
     setTheme(theme === "theme-light" ? "theme-dark" : "theme-light");
   }
 
@@ -19,3 +23,4 @@ export default function ThemeProvider({ children }) {
 export function useTheme() {
   return React.useContext(ThemeContext);
 }
+
